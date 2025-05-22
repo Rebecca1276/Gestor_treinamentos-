@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Treinamentos</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f2f2f2; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        input { padding: 8px; width: 300px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Gestor de Treinamentos</h1>
+    <input type="text" id="searchInput" placeholder="Digite o nome do colaborador...">
+    <table id="treinamentoTable">
+        <thead>
+            <tr>
+                <th>Colaborador</th>
+                <th>Status do Treinamento</th>
+                <th>Validade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Alexander</td><td>OK</td><td>2025-12-01</td></tr>
+            <tr><td>Amos</td><td>Vencido</td><td>2023-10-15</td></tr>
+            <tr><td>Jorge</td><td>Perto do vencimento</td><td>2025-06-15</td></tr>
+            <tr><td>Moisés</td><td>OK</td><td>2026-01-30</td></tr>
+            <tr><td>Vinicius</td><td>OK</td><td>2025-11-20</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        const input = document.getElementById('searchInput');
+        input.addEventListener('keyup', function() {
+            const filter = input.value.toLowerCase();
+            const rows = document.querySelectorAll('#treinamentoTable tbody tr');
+            rows.forEach(row => {
+                const name = row.cells[0].textContent.toLowerCase();
+                row.style.display = name.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
